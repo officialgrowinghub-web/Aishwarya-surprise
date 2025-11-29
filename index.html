@@ -1,16 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>AI Text Generator</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Aishwarya 💗</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #ffd6e8, #ffe8f5);
+        text-align: center;
+        padding: 40px;
+    }
+    .card {
+        background: white;
+        padding: 25px;
+        border-radius: 20px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        max-width: 350px;
+        margin: auto;
+        animation: pop 0.8s ease;
+    }
+    @keyframes pop {
+        from { transform: scale(0.5); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+    .lotus {
+        font-size: 3rem;
+    }
+    button {
+        background: #ff4f91;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 15px;
+        transition: 0.3s;
+    }
+    button:hover {
+        background: #ff1f75;
+    }
+</style>
 </head>
-<body>
-  <h2>AI Text Generator</h2>
-  <textarea id="inputText" placeholder="Enter your prompt here..." rows="5" cols="40"></textarea>
-  <br><br>
-  <button onclick="generate()">Generate</button>
-  <br><br>
-  <textarea id="outputText" placeholder="AI output will appear here..." rows="5" cols="40"></textarea>
 
-  <script src="script.js"></script>
+<body>
+
+<div class="card">
+    <div class="lotus">🌸</div>
+    <h2>Hi Aishwarya 💗</h2>
+    <p>I made something small for you…</p>
+    <button onclick="nextStep()">Click to Continue</button>
+</div>
+
+<script>
+let step = 0;
+
+function nextStep() {
+    const card = document.querySelector('.card');
+
+    if(step === 0) {
+        card.innerHTML = `
+            <div class="lotus">🌸</div>
+            <h2>You like lotus flowers right?</h2>
+            <p>So here's a cute one for you 🌸</p>
+            <button onclick="nextStep()">Next</button>
+        `;
+        step++;
+    }
+    else if(step === 1) {
+        card.innerHTML = `
+            <div class="lotus">🌸🌸🌸</div>
+            <h2>And…</h2>
+            <p>I just wanted to make you smile today.</p>
+            <button onclick="nextStep()">Next</button>
+        `;
+        step++;
+    }
+    else if(step === 2) {
+        card.innerHTML = `
+            <h2>You're a really special friend 😊</h2>
+            <p>That's all. Just wanted to say that.</p>
+            <button onclick="nextStep()">Last one</button>
+        `;
+        step++;
+    }
+    else {
+        card.innerHTML = `
+            <h2>🌸 Thank you for being yourself 🌸</h2>
+            <p>Hope this made you smile, Aishwarya 😊</p>
+        `;
+    }
+}
+</script>
+
 </body>
 </html>

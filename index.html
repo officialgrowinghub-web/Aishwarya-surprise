@@ -1,108 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>For Aishwarya</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Aishwarya</title>
 
     <style>
         body {
             margin: 0;
             padding: 0;
-            background: #ffe6f2;
-            font-family: "Poppins", sans-serif;
+            font-family: Arial, sans-serif;
+            background-color: #ffd6e8;
             text-align: center;
         }
 
-        .container {
-            padding: 40px 20px;
-            animation: fadeIn 1.6s ease;
+        h1 {
+            color: #d63384;
+            margin-top: 40px;
+            font-size: 32px;
         }
 
-        h1 {
-            font-size: 30px;
-            color: #d63384;
+        img {
+            width: 250px;
+            border-radius: 10px;
+            margin-top: 20px;
         }
 
         p {
-            font-size: 18px;
-            color: #444;
-            margin-top: 10px;
-        }
-
-        .lotus {
-            width: 150px;
-            margin-top: 20px;
-            animation: float 2.5s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            color: #333;
+            font-size: 20px;
+            padding: 0 20px;
         }
 
         .btn {
-            margin-top: 25px;
-            padding: 12px 30px;
-            background: #d63384;
+            background-color: #d63384;
             color: white;
             border: none;
+            padding: 15px 40px;
             border-radius: 30px;
-            font-size: 17px;
+            font-size: 20px;
             cursor: pointer;
-            transition: 0.3s;
+            margin-top: 20px;
         }
 
         .btn:hover {
-            background: #b82a6d;
-        }
-
-        .hidden-message {
-            display: none;
-            margin-top: 30px;
-            font-size: 20px;
-            color: #d63384;
-            animation: fadeIn 1s ease;
+            opacity: 0.9;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
-        <h1>Hi Aishwarya 👋</h1>
+    <h1>Hi Aishwarya 👋</h1>
 
-        <img class="lotus" src="https://i.ibb.co/r4Xh7Vs/lotus.png">
+    <img src="YOUR_IMAGE_LINK_HERE" alt="Image">
 
-        <p>I made something small for you…  
-        Click the button 👇</p>
+    <p>I made something small for you… Click the button 👇</p>
 
-        <button class="btn" onclick="showMessage()">Tap Here 😄</button>
+    <button class="btn" onclick="openNext()">Tap Here 😄</button>
 
-        <div id="msg" class="hidden-message">
-            Okay listen…  
-            You’re cute, I’m stupid 😌  
-            But still — thanks for tolerating me 🌸💗
-        </div>
-    </div>
+    <p>Okay listen… You’re cute, I’m stupid 😌  
+    But still — thanks for tolerating me 🌸💗</p>
 
     <script>
-        function showMessage() {
-            document.getElementById("msg").style.display = "block";
+        function openNext() {
+            window.location.href = "page2.html";
         }
-<button class="btn" onclick="goToNext()">Tap Here 😄</button>
-
-<script>
-function goToNext() {
-    window.location.href = "page2.html";
-}
-</script>    </script>
+    </script>
 
 </body>
 </html>
-

@@ -1,95 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hi Aishwarya</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aishwarya 🌈</title>
 
-    <style>
-        body {
-            background-color: #ffe6f2;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-            overflow-x: hidden;
-        }
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+        overflow-x: hidden;
+        animation: bgMove 6s infinite alternate ease-in-out;
+    }
 
-        /* --- Animations --- */
+    @keyframes bgMove {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 100% 50%; }
+    }
 
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
+    h1 {
+        font-size: 35px;
+        color: #ff2e93;
+        margin-top: 30px;
+        animation: popIn 1s ease-out;
+    }
 
-        @keyframes zoomIn {
-            0% { transform: scale(0.7); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
+    @keyframes popIn {
+        0% { transform: scale(0.3); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
+    img {
+        width: 80%;
+        max-width: 280px;
+        border-radius: 20px;
+        margin: 20px 0;
+        animation: floatPic 3s infinite ease-in-out alternate;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
 
-        h1 {
-            color: #d63384;
-            font-size: 32px;
-            margin-top: 20px;
-            animation: fadeIn 1.2s ease-out;
-        }
+    @keyframes floatPic {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-15px); }
+    }
 
-        img {
-            width: 80%;
-            max-width: 300px;
-            margin: 20px auto;
-            border-radius: 12px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
-            animation: zoomIn 1.4s ease-out;
-        }
+    p {
+        font-size: 18px;
+        padding: 0 20px;
+        animation: fadeIn 1.4s ease-out;
+    }
 
-        p {
-            color: #333;
-            font-size: 18px;
-            margin: 20px 0;
-            animation: fadeIn 1.4s ease-out;
-        }
+    @keyframes fadeIn {
+        0% { opacity: 0; transform: translateY(15px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
 
-        .button {
-            background-color: #d63384;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 30px;
-            font-size: 20px;
-            cursor: pointer;
-            margin-top: 20px;
-            animation: fadeIn 1.8s ease-out, bounce 2s infinite ease-in-out;
-        }
+    .button {
+        margin-top: 25px;
+        padding: 15px 35px;
+        border-radius: 40px;
+        border: none;
+        font-size: 20px;
+        color: white;
+        background: linear-gradient(90deg, #ff0080, #ff8c00, #00c3ff);
+        background-size: 300%;
+        cursor: pointer;
+        animation: rainbow 4s infinite alternate ease-in-out, bounce 2s infinite;
+    }
 
-        .button:hover {
-            background-color: #b82a6e;
-        }
-    </style>
+    @keyframes rainbow {
+        0% { background-position: 0%; }
+        100% { background-position: 100%; }
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    /* Fun floating emojis */
+    .emoji {
+        position: fixed;
+        font-size: 35px;
+        animation: floatUp 5s linear infinite;
+        opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+        0% { transform: translateY(100vh) rotate(0deg); }
+        100% { transform: translateY(-20vh) rotate(360deg); }
+    }
+</style>
 </head>
 
 <body>
 
-    <h1>Hi Aishwarya 👋</h1>
+<h1>Hi Aishwarya 😄✨</h1>
 
-    <!-- Your Photo -->
-    <img src="https://i.ibb.co/HNH86V1/IMG-20251014-0001.jpg" alt="Aishwarya">
+<img src="https://i.ibb.co/HNH86V1/IMG-20251014-0001.jpg" alt="Aishwarya" />
 
-    <p>I made something small for you… Click the button 👇</p>
+<p>Are you ready?  
+I made something fun for you 😁👇</p>
 
-    <!-- Button -->
-    <button class="button" onclick="window.location.href='page2.html'">
-        Tap Here 😁
-    </button>
+<button class="button" onclick="window.location.href='page2.html'">
+    Tap Me 🎉
+</button>
 
-    <p>
-        Okay listen… You’re cute, I’m stupid 😌  
-        But still — thanks for tolerating me 🌸💗
-    </p>
+<p>You’re literally the cutest chaos ever 😂💗</p>
+
+<!-- Floating emojis -->
+<script>
+    const emojis = ["😂","😄","🎉","✨","🌈","💖","🥳","😎"];
+    function createEmoji(){
+        const e = document.createElement("div");
+        e.className = "emoji";
+        e.innerText = emojis[Math.floor(Math.random()*emojis.length)];
+        e.style.left = Math.random()*90 + "vw";
+        e.style.animationDuration = (3 + Math.random()*3) + "s";
+        document.body.appendChild(e);
+        setTimeout(()=>e.remove(),6000);
+    }
+    setInterval(createEmoji,600);
+</script>
 
 </body>
-    </html>
+</html>

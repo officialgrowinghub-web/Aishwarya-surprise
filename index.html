@@ -1,100 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Aishwarya 🌈</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hi Aishwarya 💖</title>
 
 <style>
-  body{
-    margin:0;padding:0;
-    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-    font-family: "Poppins", sans-serif;
-    text-align:center;overflow-x:hidden;
-    animation: bgMove 6s infinite alternate ease-in-out;
-  }
-  @keyframes bgMove{0%{background-position:0% 50%}100%{background-position:100% 50%}}
-  h1{font-size:35px;color:#ff2e93;margin-top:30px;animation:popIn 1s ease-out}
-  @keyframes popIn{0%{transform:scale(0.3);opacity:0}100%{transform:scale(1);opacity:1}}
-  img{width:80%;max-width:280px;border-radius:20px;margin:20px 0;animation:floatPic 3s infinite alternate;box-shadow:0 10px 20px rgba(0,0,0,0.15)}
-  @keyframes floatPic{0%{transform:translateY(0)}100%{transform:translateY(-15px)}}
-  p{font-size:18px;padding:0 20px;animation:fadeIn 1.4s ease-out}
-  @keyframes fadeIn{0%{opacity:0;transform:translateY(15px)}100%{opacity:1;transform:translateY(0)}}
-  .button{
-    margin-top:25px;padding:15px 35px;border-radius:40px;border:none;font-size:20px;color:white;
-    background:linear-gradient(90deg,#ff0080,#ff8c00,#00c3ff);background-size:300%;cursor:pointer;
-    animation:rainbow 4s infinite alternate ease-in-out,bounce 2s infinite;
-  }
-  @keyframes rainbow{0%{background-position:0%}100%{background-position:100%}}
-  @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #ffc4d6, #ff9ec7);
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+        overflow-x: hidden;
+    }
 
-  /* FIXED emoji rules - start at bottom of viewport so floatUp animation is visible */
-  .emoji{
-    position: fixed;
-    top: 100vh;             /* start just off-screen at bottom */
-    font-size: 36px;
-    pointer-events: none;   /* don't block taps */
-    z-index: 9999;
-    opacity: 0.95;
-    transform-origin: center;
-    will-change: transform, top;
-  }
-  @keyframes floatUp{
-    0%   { transform: translateY(0) rotate(0deg) scale(1) }
-    30%  { transform: translateY(-30vh) rotate(45deg) scale(1.05) }
-    60%  { transform: translateY(-70vh) rotate(180deg) scale(0.98) }
-    100% { transform: translateY(-120vh) rotate(360deg) scale(0.9); opacity: 0.0; }
-  }
+    h1 {
+        color: #ff007f;
+        margin-top: 40px;
+        font-size: 38px;
+        font-weight: 700;
+        animation: fadeDown 1.2s ease-out;
+        text-shadow: 0 0 15px rgba(255, 0, 128, 0.4);
+    }
 
-  /* small responsive tweaks */
-  @media (max-width:420px){
-    h1{font-size:28px}
-    .button{padding:12px 24px;font-size:18px}
-    img{max-width:240px}
-  }
+    @keyframes fadeDown {
+        from { opacity: 0; transform: translateY(-40px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .main-img {
+        width: 80%;
+        max-width: 330px;
+        border-radius: 30px;
+        margin-top: 20px;
+        box-shadow: 0 0 35px rgba(0, 0, 0, 0.2);
+        animation: popIn 1.3s ease-out;
+    }
+
+    @keyframes popIn {
+        0% { transform: scale(0.6); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+    p {
+        font-size: 18px;
+        margin: 20px;
+        color: #4a4a4a;
+    }
+
+    .btn {
+        background: linear-gradient(90deg, #ff7eb3, #ffb86c);
+        color: white;
+        padding: 15px 50px;
+        border-radius: 40px;
+        display: inline-block;
+        font-size: 20px;
+        margin-top: 20px;
+        text-decoration: none;
+        font-weight: bold;
+        animation: pulse 2s infinite;
+        box-shadow: 0 5px 20px rgba(255, 118, 158, 0.4);
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.07); }
+        100% { transform: scale(1); }
+    }
+
+    /* Floating emojis */
+    .emoji {
+        position: absolute;
+        font-size: 28px;
+        animation: floatUp 4s infinite ease-in-out;
+        opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+        from { transform: translateY(40px); opacity: 0; }
+        to { transform: translateY(-60px); opacity: 1; }
+    }
 </style>
+
 </head>
 <body>
 
-<h1>Hi Aishwarya 😄✨</h1>
-<img src="https://i.ibb.co/HNH86V1/IMG-20251014-0001.jpg" alt="Aishwarya" />
+<h1>Hi Aishwarya 😊✨</h1>
+
+<!-- FIXED WORKING IMAGE -->
+<img src="https://i.ibb.co/h1DLGJZg/IMG-20251202-190945.jpg" class="main-img">
+
 <p>Are you ready? I made something fun for you 😁👇</p>
 
-<button class="button" onclick="window.location.href='page2.html'">Tap Me 🎉</button>
+<a href="page2.html" class="btn">Tap Me 🎉</a>
 
 <p>You’re literally the cutest chaos ever 😂💗</p>
 
-<script>
-  const emojis = ["😂","😄","🎉","✨","🌈","💖","🥳","😎"];
-
-  function createEmoji(){
-    const e = document.createElement("div");
-    e.className = "emoji";
-    e.textContent = emojis[Math.floor(Math.random()*emojis.length)];
-    // place horizontally somewhere within viewport
-    const left = Math.random() * 85; // percent
-    e.style.left = left + "vw";
-    // start slightly below viewport so top:100vh works consistently on all devices
-    e.style.top = window.innerHeight + 20 + "px";
-    // random animation duration
-    const dur = 3 + Math.random()*3;
-    e.style.animation = `floatUp ${dur}s linear forwards`;
-    // slight size variety
-    e.style.fontSize = (28 + Math.random()*22) + "px";
-    document.body.appendChild(e);
-    // remove after animation ends (+ small buffer)
-    setTimeout(()=> { e.remove(); }, (dur*1000)+300);
-  }
-
-  // spawn emojis frequently but not too fast
-  const emojiInterval = setInterval(createEmoji, 650);
-
-  // optional: stop after some time to avoid too many elements
-  setTimeout(()=> clearInterval(emojiInterval), 20000);
-
-  // also create a small burst of emojis on page load
-  for(let i=0;i<6;i++){ setTimeout(createEmoji, i*150); }
-</script>
-
-</body>
-</html>
+<!-- Emojis Floating Randomly -->
+<span class="emoji" style="left: 10%; animation-delay: 0s;">💖</span>
+<span class="emoji" style="left: 30%; animation-delay: 1s;">✨</span>
+<span class="emoji" style="left: 50%; animation-delay: 2s;">💛</span>
+<span class="emoji" style="left: 70%; animation-delay: 1.5s;">💕</span>
+<span class="emoji

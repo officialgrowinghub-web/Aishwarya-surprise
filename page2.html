@@ -3,47 +3,157 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Step 2 🌸</title>
+<title>For You 💖</title>
+
 <style>
-body{
-  margin:0;
-  font-family:Inter, sans-serif;
-  background:#fff6fb;
-  text-align:center;
-  padding:20px;
-}
-.card{
-  background:white;
-  max-width:600px;
-  margin:30px auto;
-  padding:25px;
-  border-radius:20px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.07);
-}
-.btn{
-  background:#ffd7e6;
-  border:none;
-  padding:12px 20px;
-  border-radius:30px;
-  font-size:16px;
-  font-weight:600;
-  color:#b84f7a;
-  cursor:pointer;
-}
-h2{color:#b84f7a;}
-p{color:#7d6a73;}
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        text-align: center;
+        overflow-x: hidden;
+    }
+
+    h1 {
+        margin-top: 40px;
+        font-size: 40px;
+        color: white;
+        text-shadow: 0 0 10px rgba(255,255,255,0.8);
+        animation: pop 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes pop {
+        0% { transform: scale(1); }
+        100% { transform: scale(1.07); }
+    }
+
+    /* Floating hearts */
+    .heart {
+        position: fixed;
+        bottom: -50px;
+        animation: floatUp 6s linear infinite;
+        opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+        0% { transform: translateY(0) scale(1); opacity: 1; }
+        100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+    }
+
+    /* Box */
+    .box {
+        margin: 30px auto;
+        padding: 20px;
+        width: 80%;
+        background: rgba(255,255,255,0.4);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        animation: fadeIn 2s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Game buttons */
+    .game-btn {
+        display: inline-block;
+        padding: 15px 30px;
+        margin-top: 20px;
+        background: #ff6f91;
+        color: white;
+        font-size: 18px;
+        border-radius: 50px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .game-btn:hover {
+        transform: scale(1.1);
+        background: #ff3d6d;
+    }
+
+    /* The yes/no game */
+    #gameArea {
+        margin-top: 30px;
+        font-size: 22px;
+        color: #fff;
+        display: none;
+    }
+
+    .choice {
+        padding: 12px 25px;
+        margin: 10px;
+        border-radius: 40px;
+        border: none;
+        cursor: pointer;
+        font-size: 20px;
+        color: white;
+    }
+
+    #yesBtn {
+        background: #28c76f;
+    }
+
+    #noBtn {
+        background: #ff5f5f;
+        position: relative;
+    }
 </style>
 </head>
+
 <body>
 
-<div class="card">
-  <h2>Step 1 🌿</h2>
-  <p>Just like a lotus appears slowly from the water…  
-  Some surprises also open one petal at a time.</p>
+<h1>For You, Aishwarya 💞</h1>
 
-  <button class="btn" onclick="location.href='page3.html'">Continue 🌸</button>
+<div class="box">
+    <p style="font-size:22px;">Before anything… I want to ask you something 😳💗</p>
+    <button class="game-btn" onclick="startGame()">Start Game 🎮</button>
 </div>
+
+<div id="gameArea">
+    <p>Do you think you're the cutest person ever? 😌💗</p>
+
+    <button id="yesBtn" class="choice" onclick="win()">YES 😍</button>
+    <button id="noBtn" class="choice" onmouseover="moveNo()">NO 🙄</button>
+</div>
+
+<!-- Floating Hearts Script -->
+<script>
+function startGame() {
+    document.getElementById("gameArea").style.display = "block";
+}
+
+function win() {
+    alert("Hehe, I knew it 😌💗");
+    setTimeout(() => {
+        alert("You're really adorable btw ✨💞");
+    }, 500);
+}
+
+function moveNo() {
+    let btn = document.getElementById("noBtn");
+    btn.style.left = Math.random() * 300 + "px";
+    btn.style.top = Math.random() * 300 + "px";
+}
+
+/* Generate floating hearts */
+setInterval(() => {
+    let heart = document.createElement("div");
+    heart.innerHTML = "💖";
+    heart.className = "heart";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.fontSize = (20 + Math.random()*30) + "px";
+    heart.style.animationDuration = (4 + Math.random()*4) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 7000);
+}, 500);
+</script>
 
 </body>
 </html>
-window.location.href = "page3.html";

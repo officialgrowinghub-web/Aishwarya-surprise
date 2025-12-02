@@ -3,48 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Aishwarya</title>
+    <title>Hi Aishwarya</title>
 
     <style>
         body {
-            margin: 0;
-            padding: 0;
+            background-color: #ffe6f2;
             font-family: Arial, sans-serif;
-            background-color: #ffd6e8;
             text-align: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* --- Animations --- */
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes zoomIn {
+            0% { transform: scale(0.7); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
         }
 
         h1 {
             color: #d63384;
-            margin-top: 40px;
             font-size: 32px;
+            margin-top: 20px;
+            animation: fadeIn 1.2s ease-out;
         }
 
         img {
-            width: 250px;
-            border-radius: 10px;
-            margin-top: 20px;
+            width: 80%;
+            max-width: 300px;
+            margin: 20px auto;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            animation: zoomIn 1.4s ease-out;
         }
 
         p {
             color: #333;
-            font-size: 20px;
-            padding: 0 20px;
+            font-size: 18px;
+            margin: 20px 0;
+            animation: fadeIn 1.4s ease-out;
         }
 
-        .btn {
+        .button {
             background-color: #d63384;
             color: white;
+            padding: 15px 30px;
             border: none;
-            padding: 15px 40px;
             border-radius: 30px;
             font-size: 20px;
             cursor: pointer;
             margin-top: 20px;
+            animation: fadeIn 1.8s ease-out, bounce 2s infinite ease-in-out;
         }
 
-        .btn:hover {
-            opacity: 0.9;
+        .button:hover {
+            background-color: #b82a6e;
         }
     </style>
 </head>
@@ -53,20 +76,20 @@
 
     <h1>Hi Aishwarya 👋</h1>
 
-    <img src="YOUR_IMAGE_LINK_HERE" alt="Image">
+    <!-- Your Photo -->
+    <img src="https://i.ibb.co/HNH86V1/IMG-20251014-0001.jpg" alt="Aishwarya">
 
     <p>I made something small for you… Click the button 👇</p>
 
-    <button class="btn" onclick="openNext()">Tap Here 😄</button>
+    <!-- Button -->
+    <button class="button" onclick="window.location.href='page2.html'">
+        Tap Here 😁
+    </button>
 
-    <p>Okay listen… You’re cute, I’m stupid 😌  
-    But still — thanks for tolerating me 🌸💗</p>
-
-    <script>
-        function openNext() {
-            window.location.href = "page2.html";
-        }
-    </script>
+    <p>
+        Okay listen… You’re cute, I’m stupid 😌  
+        But still — thanks for tolerating me 🌸💗
+    </p>
 
 </body>
-</html>
+    </html>

@@ -1,50 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Step 4 🌸</title>
+<title>Birthday Surprise</title>
 <style>
-body{
-  margin:0;
-  font-family:Inter, sans-serif;
-  background:#fff6fb;
-  text-align:center;
-  padding:20px;
-}
-.card{
-  background:white;
-  max-width:600px;
-  margin:30px auto;
-  padding:25px;
-  border-radius:20px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.07);
-}
-.btn{
-  background:#ffd7e6;
-  border:none;
-  padding:12px 20px;
-  border-radius:30px;
-  font-size:16px;
-  font-weight:600;
-  color:#b84f7a;
-  cursor:pointer;
-}
-h2{color:#b84f7a;}
-p{color:#7d6a73;}
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+        background: black;
+        color: white;
+        text-align: center;
+    }
+
+    .page {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        transition: left 0.7s ease;
+        padding: 20px;
+    }
+
+    .active {
+        left: 0;
+    }
+
+    h1 {
+        animation: fadein 2s ease forwards;
+    }
+
+    @keyframes fadein {
+        from { opacity: 0; transform: scale(0.8); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    button {
+        padding: 12px 24px;
+        font-size: 18px;
+        margin-top: 20px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        background: #ff4dd2;
+        color: white;
+    }
 </style>
 </head>
 <body>
 
-<div class="card">
-  <h2>Step 3 💗</h2>
-  <p>I don’t know if I say it enough…  
-  but your presence feels calming.  
-  Like soft music. Like pink clouds.</p>
+<!-- Background music -->
+<audio id="bgMusic" autoplay loop>
+    <source src="music.mp3" type="audio/mp3">
+</audio>
 
-  <button class="btn" onclick="location.href='page5.html'">Continue 🌸</button>
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+    <h1>🎉 Happy Birthday! 🎉</h1>
+    <p>Welcome to your surprise!</p>
+    <button onclick="nextPage()">Next →</button>
 </div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+    <h1>💗 You are Special! 💗</h1>
+    <p>Here is something for you...</p>
+    <button onclick="nextPage()">Next →</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+    <h1>🎁 Your QR Surprise 🎁</h1>
+    <img src="qr.png" width="200">
+    <button onclick="nextPage()">Next →</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+    <h1>✨ Slide Effects Added ✨</h1>
+    <p>Hope you like it!</p>
+    <button onclick="nextPage()">Next →</button>
+</div>
+
+<!-- FINAL PAGE -->
+<div class="page" id="page5">
+    <h1>🌟 The End 🌟</h1>
+    <p>Thank you for watching 😄</p>
+</div>
+
+<script>
+let currentPage = 1;
+
+function nextPage() {
+    document.getElementById("page" + currentPage).classList.remove("active");
+    currentPage++;
+    if (currentPage <= 5) {
+        document.getElementById("page" + currentPage).classList.add("active");
+    }
+}
+</script>
 
 </body>
 </html>
-window.location.href = "page5.html";

@@ -1,108 +1,162 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Birthday Surprise</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page 4</title>
+
 <style>
     body {
         margin: 0;
-        font-family: Arial, sans-serif;
         overflow: hidden;
-        background: black;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(120deg, #2b1055, #7597de);
+        animation: bg 10s infinite alternate;
         color: white;
+    }
+
+    @keyframes bg {
+        0% { background: linear-gradient(120deg, #1a1a2e, #16213e); }
+        100% { background: linear-gradient(120deg, #2b1055, #7597de); }
+    }
+
+    .title {
+        font-size: 45px;
+        font-weight: 700;
         text-align: center;
+        margin-top: 60px;
+        text-shadow: 0 0 20px #7f5af0;
+        animation: pop 1.5s ease-out forwards;
+        opacity: 0;
     }
 
-    .page {
-        width: 100vw;
-        height: 100vh;
-        position: absolute;
-        top: 0;
-        left: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        transition: left 0.7s ease;
-        padding: 20px;
+    @keyframes pop {
+        0% { transform: scale(0.6); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
     }
 
-    .active {
-        left: 0;
+    .box {
+        width: 80%;
+        margin: 70px auto;
+        padding: 30px;
+        background: rgba(255,255,255,0.08);
+        border-radius: 20px;
+        box-shadow: 0 0 30px rgba(255,255,255,0.2);
+        backdrop-filter: blur(10px);
+        animation: fade 2s forwards;
+        opacity: 0;
+        text-align: center;
+        font-size: 22px;
     }
 
-    h1 {
-        animation: fadein 2s ease forwards;
+    @keyframes fade {
+        0% { opacity: 0; transform: translateY(40px); }
+        100% { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes fadein {
-        from { opacity: 0; transform: scale(0.8); }
-        to { opacity: 1; transform: scale(1); }
-    }
-
-    button {
-        padding: 12px 24px;
-        font-size: 18px;
-        margin-top: 20px;
+    .reveal-btn {
+        margin-top: 30px;
+        padding: 15px 40px;
+        font-size: 22px;
         border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        background: #ff4dd2;
+        border-radius: 50px;
+        background: linear-gradient(45deg, #ff00c8, #7f5af0);
         color: white;
+        cursor: pointer;
+        box-shadow: 0 0 20px #7f5af0;
+        transition: 0.3s;
+    }
+
+    .reveal-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 35px #ff00e6;
+    }
+
+    #hiddenMsg {
+        font-size: 30px;
+        margin-top: 40px;
+        opacity: 0;
+        animation: msg 2s forwards;
+        display: none;
+        text-shadow: 0 0 25px #ff4fe6;
+    }
+
+    @keyframes msg {
+        0% { opacity: 0; transform: translateY(40px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Floating particles */
+    .particle {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: white;
+        border-radius: 50%;
+        opacity: 0.7;
+        animation: floatUp 6s infinite;
+    }
+
+    @keyframes floatUp {
+        from { transform: translateY(100vh); }
+        to { transform: translateY(-10vh); }
+    }
+
+    /* Continue button */
+    .next {
+        display: block;
+        margin: 50px auto;
+        width: 200px;
+        padding: 15px;
+        text-align: center;
+        background: #00eaff;
+        color: #000;
+        font-size: 22px;
+        border-radius: 40px;
+        box-shadow: 0 0 20px #00eaff;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .next:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 35px #00ffe0;
     }
 </style>
 </head>
+
 <body>
 
-<!-- Background music -->
-<audio id="bgMusic" autoplay loop>
-    <source src="music.mp3" type="audio/mp3">
-</audio>
+<h1 class="title">✨ PAGE 4 – SURPRISE AREA ✨</h1>
 
-<!-- PAGE 1 -->
-<div class="page active" id="page1">
-    <h1>🎉 Happy Birthday! 🎉</h1>
-    <p>Welcome to your surprise!</p>
-    <button onclick="nextPage()">Next →</button>
+<div class="box">
+    Click the button below to reveal something cool!
+    <br><br>
+    <button class="reveal-btn" onclick="showSurprise()">Reveal Surprise</button>
+
+    <div id="hiddenMsg">🎉 WOW! YOU FOUND THE SECRET MESSAGE 🎉</div>
 </div>
 
-<!-- PAGE 2 -->
-<div class="page" id="page2">
-    <h1>💗 You are Special! 💗</h1>
-    <p>Here is something for you...</p>
-    <button onclick="nextPage()">Next →</button>
-</div>
-
-<!-- PAGE 3 -->
-<div class="page" id="page3">
-    <h1>🎁 Your QR Surprise 🎁</h1>
-    <img src="qr.png" width="200">
-    <button onclick="nextPage()">Next →</button>
-</div>
-
-<!-- PAGE 4 -->
-<div class="page" id="page4">
-    <h1>✨ Slide Effects Added ✨</h1>
-    <p>Hope you like it!</p>
-    <button onclick="nextPage()">Next →</button>
-</div>
-
-<!-- FINAL PAGE -->
-<div class="page" id="page5">
-    <h1>🌟 The End 🌟</h1>
-    <p>Thank you for watching 😄</p>
-</div>
+<!-- Continue -->
+<a href="page5.html" class="next">Continue →</a>
 
 <script>
-let currentPage = 1;
+function showSurprise() {
+    let msg = document.getElementById("hiddenMsg");
+    msg.style.display = "block";
+}
 
-function nextPage() {
-    document.getElementById("page" + currentPage).classList.remove("active");
-    currentPage++;
-    if (currentPage <= 5) {
-        document.getElementById("page" + currentPage).classList.add("active");
+function createParticles() {
+    for (let i = 0; i < 25; i++) {
+        let p = document.createElement("div");
+        p.className = "particle";
+        p.style.left = Math.random() * window.innerWidth + "px";
+        p.style.animationDuration = (4 + Math.random() * 4) + "s";
+        document.body.appendChild(p);
     }
 }
+createParticles();
 </script>
 
 </body>
-</html>
+</html

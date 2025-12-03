@@ -2,107 +2,188 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Page 5 – Grand Finale</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Final Surprise 💖</title>
+
 <style>
     body {
-        background: linear-gradient(135deg, #ff7eb3, #ff758c, #ffb199);
-        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #ffd6e9, #ffb3d1, #ffcee7);
         text-align: center;
-        padding: 50px;
         overflow: hidden;
-        color: white;
     }
 
     h1 {
+        margin-top: 30px;
+        color: #ff2e7e;
         font-size: 40px;
-        text-shadow: 0 0 10px white;
+        text-shadow: 0 0 15px rgba(255,0,100,0.7);
         animation: glow 2s infinite alternate;
     }
 
     @keyframes glow {
-        from { text-shadow: 0 0 10px white; }
-        to { text-shadow: 0 0 25px #fff3; }
+        from { text-shadow: 0 0 10px #ff5fa2; }
+        to { text-shadow: 0 0 25px #ff1f6d; }
     }
 
-    .card {
-        background: rgba(255,255,255,0.15);
-        padding: 25px;
-        border-radius: 20px;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 0 20px rgba(255,255,255,0.2);
-        width: 80%;
-        margin: auto;
-        margin-top: 30px;
-        animation: pop 0.8s ease-out;
-    }
-
-    @keyframes pop {
-        from { transform: scale(0.7); opacity: 0; }
-        to { transform: scale(1); opacity: 1; }
-    }
-
-    /* FINAL BUTTON */
-    .next-btn {
-        margin-top: 40px;
-        padding: 18px 40px;
+    /* Typewriter Text */
+    #typewriter {
         font-size: 22px;
-        color: white;
-        background: linear-gradient(90deg, #ff4d79, #ff0066);
-        border: none;
-        border-radius: 40px;
-        cursor: pointer;
-        transition: 0.3s;
-        font-weight: bold;
-        box-shadow: 0 0 15px rgba(255,0,80,0.5);
+        color: #c80062;
+        margin: 20px;
+        height: 60px;
+        font-weight: 600;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 3px solid #ff1f6d;
+        width: 0;
+        animation: typing 4s steps(40) forwards,
+                   blink 0.5s step-end infinite alternate;
     }
 
-    .next-btn:hover {
-        transform: scale(1.08);
-        box-shadow: 0 0 25px rgba(255,0,80,0.8);
+    @keyframes typing {
+        from { width: 0; }
+        to { width: 100%; }
     }
 
-    .floating-heart {
-        position: absolute;
-        font-size: 28px;
-        animation: floatUp 4s linear infinite;
+    @keyframes blink {
+        50% { border-color: transparent; }
+    }
+
+    /* Image Reveal Box */
+    .img-box {
+        width: 80%;
+        margin: 20px auto;
+        padding: 15px;
+        border-radius: 15px;
+        background: rgba(255,255,255,0.3);
+        box-shadow: 0 0 20px rgba(255,0,100,0.4);
+        backdrop-filter: blur(10px);
+        display: none;
+        animation: fadeIn 1.5s ease-in-out forwards;
+    }
+
+    .img-box img {
+        width: 100%;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(255,0,150,0.6);
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Floating Hearts */
+    .heart {
+        position: fixed;
+        bottom: -20px;
+        color: #ff4f9e;
+        font-size: 20px;
+        animation: floatUp 5s linear infinite;
         opacity: 0.8;
     }
 
     @keyframes floatUp {
-        0% { transform: translateY(40vh); opacity: 0; }
-        20% { opacity: 1; }
-        100% { transform: translateY(-40vh); opacity: 0; }
+        0% { transform: translateY(0) translateX(0); opacity: 1; }
+        100% { transform: translateY(-100vh) translateX(40px); opacity: 0; }
+    }
+
+    /* Puzzle Box */
+    .puzzle {
+        margin: 20px auto;
+        background: rgba(255,255,255,0.3);
+        width: 80%;
+        padding: 20px;
+        border-radius: 15px;
+        display: none;
+        font-size: 20px;
+        font-weight: 600;
+        color: #c80062;
+    }
+
+    /* Continue Button */
+    .next-btn {
+        display: none;
+        margin-top: 25px;
+        padding: 15px 35px;
+        background: linear-gradient(45deg, #ff5fa2, #ff86c3);
+        color: white;
+        border-radius: 50px;
+        text-decoration: none;
+        font-size: 22px;
+        box-shadow: 0 0 20px rgba(255,70,140,0.6);
+        animation: glowBtn 1.5s infinite alternate;
+    }
+
+    @keyframes glowBtn {
+        from { box-shadow: 0 0 10px #ff4f92; }
+        to { box-shadow: 0 0 25px #ff1f6d; transform: scale(1.05); }
     }
 </style>
 </head>
+
 <body>
 
-<h1>✨ PAGE 5 – SPECIAL MOMENT ✨</h1>
+<h1>Your Final Surprise 💖</h1>
 
-<div class="card">
-    <h2>You’ve come so far! 💫</h2>
-    <p>This is the last step before the *Final Surprise Page*.  
-    Get ready for something even more cool!</p>
+<div id="typewriter">You have reached the final special page I made just for you 💕</div>
+
+<!-- Image Reveal -->
+<div class="img-box" id="imgReveal">
+    <img src="https://i.ibb.co/h1DLGJZg/IMG-20251202-190945.jpg" alt="Photo">
 </div>
 
-<!-- Final Page Button -->
-<button class="next-btn" onclick="location.href='final.html'">
-    🚀 Go to Final Page
-</button>
+<!-- Puzzle Section -->
+<div class="puzzle" id="puzzleBox">
+    ✨ **Your Secret Sentence:**  
+    <br><br>
+    <span id="puzzleText">Loading...</span>
+</div>
 
-<!-- Floating Hearts -->
+<!-- Continue Button -->
+<a href="page6.html" id="nextBtn" class="next-btn">Next Surprise ➜</a>
+
 <script>
-    function createHeart() {
-        const heart = document.createElement("div");
-        heart.className = "floating-heart";
-        heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * 95 + "vw";
-        heart.style.animationDuration = (3 + Math.random() * 3) + "s";
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 6000);
-    }
+/* Floating Hearts */
+setInterval(() => {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random()*window.innerWidth + "px";
+    heart.style.fontSize = (20 + Math.random()*15) + "px";
+    document.body.appendChild(heart);
 
-    setInterval(createHeart, 700);
+    setTimeout(() => heart.remove(), 5000);
+}, 400);
+
+/* Reveal Image After Typing */
+setTimeout(() => {
+    document.getElementById("imgReveal").style.display = "block";
+}, 4500);
+
+/* Puzzle Reveal */
+const sentence = "You are truly special and you deserve all the happiness ✨💗";
+let index = 0;
+
+setTimeout(() => {
+    document.getElementById("puzzleBox").style.display = "block";
+
+    let reveal = setInterval(() => {
+        document.getElementById("puzzleText").innerText = sentence.substring(0, index);
+        index++;
+        if (index > sentence.length) {
+            clearInterval(reveal);
+
+            setTimeout(() => {
+                document.getElementById("nextBtn").style.display = "inline-block";
+            }, 1000);
+        }
+    }, 80);
+
+}, 6000);
 </script>
 
 </body>

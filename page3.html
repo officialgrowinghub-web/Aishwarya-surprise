@@ -3,47 +3,185 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Step 3 🌸</title>
+<title>A Little Surprise 🎁</title>
+
 <style>
-body{
-  margin:0;
-  font-family:Inter, sans-serif;
-  background:#fffafc;
-  text-align:center;
-  padding:20px;
-}
-.card{
-  background:white;
-  max-width:600px;
-  margin:30px auto;
-  padding:25px;
-  border-radius:20px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.07);
-}
-.btn{
-  background:#ffd7e6;
-  border:none;
-  padding:12px 20px;
-  border-radius:30px;
-  font-size:16px;
-  font-weight:600;
-  color:#b84f7a;
-  cursor:pointer;
-}
-h2{color:#b84f7a;}
-p{color:#7d6a73;}
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #ffe8f0, #ffc9e3);
+        text-align: center;
+        overflow-x: hidden;
+    }
+
+    h1 {
+        margin-top: 30px;
+        font-size: 38px;
+        color: #ff4f92;
+        text-shadow: 0 0 10px rgba(255, 0, 90, 0.5);
+        animation: float 2s infinite alternate ease-in-out;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-10px); }
+    }
+
+    /* Scratch Card */
+    .scratch-box {
+        margin: 30px auto;
+        width: 85%;
+        height: 180px;
+        background: #ddd;
+        border-radius: 15px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    #cover {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: silver;
+        cursor: crosshair;
+    }
+
+    #secret {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #ff7bb0, #ffa1d2);
+        color: white;
+        font-size: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+
+    /* Balloon Game */
+    #gameArea {
+        margin-top: 30px;
+    }
+
+    .balloon {
+        width: 70px;
+        height: 90px;
+        background: #ff8fb1;
+        border-radius: 50%;
+        position: relative;
+        display: inline-block;
+        margin: 15px;
+        cursor: pointer;
+        animation: floatUp 3s infinite ease-in-out;
+    }
+
+    @keyframes floatUp {
+        0% { transform: translateY(10px); }
+        100% { transform: translateY(-20px); }
+    }
+
+    /* Lotus floating */
+    .lotus {
+        position: fixed;
+        bottom: -40px;
+        font-size: 30px;
+        animation: drift 8s linear infinite;
+        opacity: 0.8;
+    }
+
+    @keyframes drift {
+        0% { transform: translateX(0) rotate(0); }
+        100% { transform: translateX(-100vw) rotate(360deg); }
+    }
+
+    /* Continue Button */
+    .continue-btn {
+        display: inline-block;
+        margin-top: 40px;
+        padding: 18px 40px;
+        background: linear-gradient(45deg, #ff4f92, #ff86b8);
+        color: white;
+        font-size: 22px;
+        border-radius: 50px;
+        text-decoration: none;
+        box-shadow: 0 0 20px rgba(255,70,140,0.6);
+        animation: glow 1.5s infinite alternate;
+    }
+
+    @keyframes glow {
+        0% { box-shadow: 0 0 10px #ff4f92; }
+        100% { box-shadow: 0 0 25px #ff1f6d; transform: scale(1.05); }
+    }
 </style>
 </head>
+
 <body>
 
-<div class="card">
-  <h2>Step 2 ✨</h2>
-  <p>Some people enter our life quietly…  
-  but leave a soft warmth that stays for long.</p>
+<h1>Another Surprise for You 🎁</h1>
 
-  <button class="btn" onclick="location.href='page4.html'">Continue 🌸</button>
+<!-- SCRATCH CARD -->
+<div class="scratch-box">
+    <div id="secret">You make the world a little brighter ✨</div>
+    <canvas id="cover"></canvas>
 </div>
+
+<!-- GAME SECTION -->
+<h2 style="color:#ff4f92;">Pop 3 Balloons 🎈 to get the next surprise!</h2>
+
+<div id="gameArea">
+    <div class="balloon" onclick="popBalloon(this)"></div>
+    <div class="balloon" onclick="popBalloon(this)"></div>
+    <div class="balloon" onclick="popBalloon(this)"></div>
+</div>
+
+<!-- Continue Button (Hidden Until Game is Completed) -->
+<a id="nextBtn" href="page4.html" class="continue-btn" style="display:none;">Continue ➜</a>
+
+<script>
+/* SCRATCH CARD */
+let canvas = document.getElementById("cover");
+let ctx = canvas.getContext("2d");
+canvas.width = canvas.parentElement.clientWidth;
+canvas.height = canvas.parentElement.clientHeight;
+ctx.fillStyle = "silver";
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+canvas.addEventListener("mousemove", function(e) {
+    if (e.buttons > 0) {
+        let x = e.offsetX;
+        let y = e.offsetY;
+        ctx.clearRect(x-20, y-20, 60, 60);
+    }
+});
+
+/* BALLOON GAME */
+let popped = 0;
+
+function popBalloon(balloon) {
+    balloon.style.visibility = "hidden";
+    popped++;
+
+    if (popped === 3) {
+        document.getElementById("nextBtn").style.display = "inline-block";
+    }
+}
+
+/* FLOATING LOTUS */
+setInterval(() => {
+    let lotus = document.createElement("div");
+    lotus.innerHTML = "🌸";
+    lotus.className = "lotus";
+    lotus.style.left = Math.random() * window.innerWidth + "px";
+    lotus.style.fontSize = (25 + Math.random()*20) + "px";
+    lotus.style.animationDuration = (6 + Math.random()*4) + "s";
+    document.body.appendChild(lotus);
+
+    setTimeout(() => lotus.remove(), 9000);
+}, 600);
+</script>
 
 </body>
 </html>
-window.location.href = "page4.html";

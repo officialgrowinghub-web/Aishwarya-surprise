@@ -40,14 +40,6 @@
         box-shadow: 0 5px 20px rgba(0,0,0,0.2);
     }
 
-    #cover {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: silver;
-        cursor: crosshair;
-    }
-
     #secret {
         position: absolute;
         width: 100%;
@@ -59,6 +51,14 @@
         justify-content: center;
         align-items: center;
         padding: 10px;
+        z-index: 0;
+    }
+
+    #cover {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
     }
 
     /* Balloon Game */
@@ -109,6 +109,7 @@
         text-decoration: none;
         box-shadow: 0 0 20px rgba(255,70,140,0.6);
         animation: glow 1.5s infinite alternate;
+        display: none;
     }
 
     @keyframes glow {
@@ -122,9 +123,8 @@
 
 <h1>Another Surprise for You 🎁</h1>
 
-<!-- ⭐ ADDED INSTRUCTION HERE ⭐ -->
 <h2 style="color:#ff4f92; margin-top:10px;">
-✨ Scratch the silver box below to reveal your first surprise! ✨
+✨ Scratch the silver area below to reveal your surprise ✨
 </h2>
 
 <!-- SCRATCH CARD -->
@@ -133,7 +133,6 @@
     <canvas id="cover"></canvas>
 </div>
 
-<!-- GAME SECTION -->
 <h2 style="color:#ff4f92;">Pop 3 Balloons 🎈 to get the next surprise!</h2>
 
 <div id="gameArea">
@@ -142,25 +141,48 @@
     <div class="balloon" onclick="popBalloon(this)"></div>
 </div>
 
-<!-- Continue Button -->
-<a id="nextBtn" href="page4.html" class="continue-btn" style="display:none;">Continue ➜</a>
+<a id="nextBtn" href="page4.html" class="continue-btn">Continue ➜</a>
 
 <script>
-/* SCRATCH CARD */
-let canvas = document.getElementById("cover");
-let ctx = canvas.getContext("2d");
-canvas.width = canvas.parentElement.clientWidth;
-canvas.height = canvas.parentElement.clientHeight;
-ctx.fillStyle = "silver";
-ctx.fillRect(0, 0, canvas.width, canvas.height);
+/* FIXED SCRATCH FUNCTION */
+const canvas = document.getElementById("cover");
+const ctx = canvas.getContext("2d");
 
-canvas.addEventListener("mousemove", function(e) {
-    if (e.buttons > 0) {
-        let x = e.offsetX;
-        let y = e.offsetY;
-        ctx.clearRect(x-20, y-20, 60, 60);
+function setupCanvas() {
+    canvas.width = canvas.parentElement.clientWidth;
+    canvas.height = canvas.parentElement.clientHeight;
+
+    ctx.fillStyle = "silver";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+setupCanvas();
+window.addEventListener("resize", setupCanvas);
+
+/* Works for mouse + mobile */
+function scratch(e) {
+    const rect = canvas.getBoundingClientRect();
+    let x, y;
+
+    if (e.touches) {
+        x = e.touches[0].clientX - rect.left;
+        y = e.touches[0].clientY - rect.top;
+    } else {
+        x = e.offsetX;
+        y = e.offsetY;
     }
-});
+
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.beginPath();
+    ctx.arc(x, y, 25, 0, Math.PI * 2);
+    ctx.fill();
+}
+
+canvas.addEventListener("mousemove", (e) => scratch(e));
+canvas.addEventListener("mousedown", (e) => scratch(e));
+canvas.addEventListener("touchstart", (e) => scratch(e));
+canvas.addEventListener("touchmove", (e) => scratch(e));
+
 
 /* BALLOON GAME */
 let popped = 0;
@@ -174,7 +196,7 @@ function popBalloon(balloon) {
     }
 }
 
-/* FLOATING LOTUS */
+/* LOTUS FLOAT */
 setInterval(() => {
     let lotus = document.createElement("div");
     lotus.innerHTML = "🌸";

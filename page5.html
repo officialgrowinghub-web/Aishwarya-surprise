@@ -3,142 +3,151 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Your Final Message ✨</title>
+<title>Happy Birthday 🎉💖</title>
 
 <style>
     body {
         margin: 0;
         padding: 0;
-        background: radial-gradient(circle at top, #ffe4f2, #ffb6d8, #ff90c1);
+        background: linear-gradient(135deg, #ffb6e6, #ff8ccc, #ff77b9);
         height: 100vh;
         overflow: hidden;
         font-family: 'Poppins', sans-serif;
+        color: white;
         text-align: center;
-        color: #fff;
     }
 
-    /* Floating Particles */
-    .particle {
+    /* Glitter Stars */
+    .star {
         position: absolute;
-        font-size: 20px;
-        animation: floatUp 8s linear infinite;
+        color: #fff;
+        font-size: 18px;
+        animation: rise 6s linear infinite;
         opacity: 0.9;
     }
 
-    @keyframes floatUp {
-        0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-        100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    @keyframes rise {
+        0% { transform: translateY(100vh) scale(1); opacity: 1; }
+        100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
     }
 
     /* Title */
     h1 {
-        margin-top: 80px;
-        font-size: 45px;
-        text-shadow: 0 0 25px rgba(255,255,255,0.8),
-                     0 0 50px rgba(255,150,200,0.6);
-        animation: fadeIn 2s ease-in-out forwards;
+        margin-top: 60px;
+        font-size: 46px;
+        font-weight: 700;
+        text-shadow: 0 0 20px rgba(255,255,255,0.9), 0 0 40px rgba(255,150,200,0.6);
         opacity: 0;
+        animation: fadeDown 1.5s ease forwards;
     }
 
-    /* Typewriter Message Box */
-    .message-box {
-        width: 80%;
+    @keyframes fadeDown {
+        from { opacity: 0; transform: translateY(-30px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Message Box */
+    .box {
+        width: 85%;
         margin: 40px auto;
-        background: rgba(255,255,255,0.13);
         padding: 25px;
-        border-radius: 20px;
-        backdrop-filter: blur(12px);
-        box-shadow: 0 0 20px rgba(255,255,255,0.4);
         font-size: 22px;
         line-height: 1.6;
+        background: rgba(255,255,255,0.18);
+        border-radius: 18px;
         border: 2px solid rgba(255,255,255,0.5);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 0 25px rgba(255,255,255,0.4);
         opacity: 0;
-        animation: fadeIn 3s ease forwards 1.2s;
+        animation: fadeUp 2s ease forwards 1.2s;
     }
 
-    /* Typewriter text */
-    #finalText {
-        display: inline-block;
-        border-right: 3px solid rgba(255,255,255,0.8);
-        white-space: nowrap;
-        overflow: hidden;
-        font-size: 24px;
-        max-width: 100%;
-        animation: blink 0.7s infinite;
-    }
-
-    @keyframes blink {
-        0% { border-color: transparent; }
-        50% { border-color: white; }
-        100% { border-color: transparent; }
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(30px); }
         to   { opacity: 1; transform: translateY(0); }
     }
 
     /* Final Button */
-    .end-btn {
+    .btn {
         display: inline-block;
         margin-top: 35px;
-        padding: 16px 40px;
+        padding: 16px 45px;
         font-size: 22px;
-        background: linear-gradient(45deg, #ff3f9e, #ff75c9);
         border-radius: 40px;
+        background: linear-gradient(45deg, #ff3f9e, #ff68c5);
         color: white;
         text-decoration: none;
-        box-shadow: 0 0 25px rgba(255, 100, 180, 0.8);
-        animation: pulse 1.7s infinite;
+        box-shadow: 0 0 25px rgba(255,70,160,0.9);
+        animation: pulse 1.5s infinite alternate;
     }
 
     @keyframes pulse {
-        0% { transform: scale(1); box-shadow: 0 0 15px #ff3f9e; }
-        100% { transform: scale(1.08); box-shadow: 0 0 35px #ff59b6; }
+        0% { transform: scale(1); }
+        100% { transform: scale(1.07); }
+    }
+
+    /* Typewriter */
+    #messageText {
+        white-space: pre-wrap;
+        overflow: hidden;
+        border-right: 3px solid white;
+        padding-right: 5px;
+        font-size: 22px;
+        animation: cursorBlink 0.7s infinite;
+    }
+
+    @keyframes cursorBlink {
+        0% { border-color: transparent; }
+        50% { border-color: white; }
+        100% { border-color: transparent; }
     }
 </style>
 </head>
 
 <body>
 
-<h1>Your Final Surprise 💖</h1>
+<h1>🎉💖 Happy Birthday to You! 💖🎉</h1>
 
-<div class="message-box">
-    <span id="finalText"></span>
+<div class="box">
+    <div id="messageText"></div>
 </div>
 
-<a class="end-btn" href="index.html">Back to Start ↺</a>
+<a href="index.html" class="btn">Restart ↺</a>
 
 <script>
-// Floating particles
+// Floating Stars
 setInterval(() => {
-    let p = document.createElement("div");
-    p.className = "particle";
-    p.innerHTML = ["🌸","✨","💖","🌟","💞","💕"][Math.floor(Math.random()*6)];
-    p.style.left = Math.random() * window.innerWidth + "px";
-    p.style.fontSize = (20 + Math.random()*20) + "px";
-    p.style.animationDuration = (6 + Math.random()*4) + "s";
-    document.body.appendChild(p);
-    setTimeout(() => p.remove(), 7000);
-}, 350);
+    let s = document.createElement("div");
+    s.className = "star";
+    s.innerHTML = ["✨","💖","🌸","⭐","💫"][Math.floor(Math.random()*5)];
+    s.style.left = Math.random() * window.innerWidth + "px";
+    s.style.fontSize = (18 + Math.random()*15) + "px";
+    s.style.animationDuration = (5 + Math.random()*4) + "s";
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 7000);
+}, 300);
 
-// Typewriter message
-const msg = 
-"Here’s a small truth…\n" +
-"You are stronger than you think,\n" +
-"brighter than you believe,\n" +
-"and more special than words can ever describe. ✨\n\n" +
-"Never forget… the world is better because you are in it 💗";
+// Typewriter Message
+const text =
+"On your special day… 💫\n\n" +
+"I just want to say something simple,\n" +
+"but truly from the heart… 💖\n\n" +
+"May your day be filled with smiles,\n" +
+"your year be filled with happiness,\n" +
+"and your life be filled with endless love.\n\n" +
+"You deserve every bit of joy today brings. ✨\n\n" +
+"🎂💝 HAPPY BIRTHDAY! 💝🎂\n" +
+"May all your wishes come true. 💫";
 
 let i = 0;
 function typeWriter() {
-    if (i < msg.length) {
-        document.getElementById("finalText").innerHTML += msg.charAt(i);
+    if (i < text.length) {
+        document.getElementById("messageText").textContent += text.charAt(i);
         i++;
-        setTimeout(typeWriter, 40);
+        setTimeout(typeWriter, 38);
     }
 }
-setTimeout(typeWriter, 1800);
+setTimeout(typeWriter, 1500);
 </script>
 
 </body>

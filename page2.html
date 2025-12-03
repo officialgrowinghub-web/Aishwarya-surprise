@@ -28,7 +28,6 @@
         100% { transform: scale(1.07); }
     }
 
-    /* Floating hearts */
     .heart {
         position: fixed;
         bottom: -50px;
@@ -41,7 +40,6 @@
         100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
     }
 
-    /* Box */
     .box {
         margin: 30px auto;
         padding: 20px;
@@ -58,7 +56,6 @@
         to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Game buttons */
     .game-btn {
         display: inline-block;
         padding: 15px 30px;
@@ -77,7 +74,6 @@
         background: #ff3d6d;
     }
 
-    /* The yes/no game */
     #gameArea {
         margin-top: 30px;
         font-size: 22px;
@@ -103,6 +99,31 @@
         background: #ff5f5f;
         position: relative;
     }
+
+    /* CONTINUE BUTTON */
+    .continue-btn {
+        display: inline-block;
+        margin-top: 40px;
+        padding: 18px 40px;
+        background: linear-gradient(45deg, #ff3d6d, #ff89c0);
+        color: white;
+        font-size: 22px;
+        border-radius: 50px;
+        cursor: pointer;
+        text-decoration: none;
+        box-shadow: 0 0 20px rgba(255,0,80,0.6);
+        animation: glow 1.5s infinite alternate ease-in-out;
+        transition: 0.3s;
+    }
+
+    @keyframes glow {
+        0% { box-shadow: 0 0 15px #ff5f9e; }
+        100% { box-shadow: 0 0 30px #ff1e6d; transform: scale(1.05); }
+    }
+
+    .continue-btn:hover {
+        transform: scale(1.1);
+    }
 </style>
 </head>
 
@@ -122,7 +143,9 @@
     <button id="noBtn" class="choice" onmouseover="moveNo()">NO 🙄</button>
 </div>
 
-<!-- Floating Hearts Script -->
+<!-- CONTINUE BUTTON -->
+<a href="page3.html" class="continue-btn">Continue ➜</a>
+
 <script>
 function startGame() {
     document.getElementById("gameArea").style.display = "block";
@@ -137,11 +160,10 @@ function win() {
 
 function moveNo() {
     let btn = document.getElementById("noBtn");
-    btn.style.left = Math.random() * 300 + "px";
-    btn.style.top = Math.random() * 300 + "px";
+    btn.style.left = Math.random() * 250 + "px";
+    btn.style.top = Math.random() * 250 + "px";
 }
 
-/* Generate floating hearts */
 setInterval(() => {
     let heart = document.createElement("div");
     heart.innerHTML = "💖";
@@ -150,7 +172,6 @@ setInterval(() => {
     heart.style.fontSize = (20 + Math.random()*30) + "px";
     heart.style.animationDuration = (4 + Math.random()*4) + "s";
     document.body.appendChild(heart);
-
     setTimeout(() => heart.remove(), 7000);
 }, 500);
 </script>

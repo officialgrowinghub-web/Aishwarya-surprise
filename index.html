@@ -3,103 +3,110 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hi Aishwarya 💖</title>
+<title>Surprise Page 🌸✨</title>
 
 <style>
     body {
         margin: 0;
         padding: 0;
-        background: linear-gradient(135deg, #ffc4d6, #ff9ec7);
-        font-family: "Poppins", sans-serif;
+        font-family: 'Poppins', sans-serif;
         text-align: center;
+        background: linear-gradient(180deg, #ff9ecb, #ffd4e8, #ffeef7);
         overflow-x: hidden;
     }
 
-    h1 {
-        color: #ff007f;
-        margin-top: 40px;
-        font-size: 38px;
-        font-weight: 700;
-        animation: fadeDown 1.2s ease-out;
-        text-shadow: 0 0 15px rgba(255, 0, 128, 0.4);
-    }
-
-    @keyframes fadeDown {
-        from { opacity: 0; transform: translateY(-40px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    .main-img {
-        width: 80%;
-        max-width: 330px;
-        border-radius: 30px;
-        margin-top: 20px;
-        box-shadow: 0 0 35px rgba(0, 0, 0, 0.2);
-        animation: popIn 1.3s ease-out;
-    }
-
-    @keyframes popIn {
-        0% { transform: scale(0.6); opacity: 0; }
-        100% { transform: scale(1); opacity: 1; }
-    }
-
-    p {
-        font-size: 18px;
-        margin: 20px;
-        color: #4a4a4a;
-    }
-
-    .btn {
-        background: linear-gradient(90deg, #ff7eb3, #ffb86c);
-        color: white;
-        padding: 15px 50px;
-        border-radius: 40px;
-        display: inline-block;
-        font-size: 20px;
-        margin-top: 20px;
-        text-decoration: none;
-        font-weight: bold;
-        animation: pulse 2s infinite;
-        box-shadow: 0 5px 20px rgba(255, 118, 158, 0.4);
-    }
-
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.07); }
-        100% { transform: scale(1); }
-    }
-
-    /* Floating emojis */
-    .emoji {
+    /* Floating hearts animation */
+    .heart {
         position: absolute;
-        font-size: 28px;
-        animation: floatUp 4s infinite ease-in-out;
-        opacity: 0.8;
+        color: #ff7bbf;
+        animation: floatUp 6s infinite ease-in;
+        opacity: 0.7;
+        font-size: 25px;
     }
 
     @keyframes floatUp {
-        from { transform: translateY(40px); opacity: 0; }
-        to { transform: translateY(-60px); opacity: 1; }
+        0% { transform: translateY(50px) scale(1); opacity: 0; }
+        50% { opacity: 1; }
+        100% { transform: translateY(-600px) scale(1.5); opacity: 0; }
     }
-</style>
 
+    h1 {
+        margin-top: 35px;
+        font-size: 34px;
+        color: #ff1e8e;
+        font-weight: 700;
+    }
+
+    p {
+        margin: 10px 20px;
+        font-size: 18px;
+        color: #555;
+    }
+
+    .card {
+        background: white;
+        width: 85%;
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+    }
+
+    img {
+        width: 85%;
+        border-radius: 15px;
+        box-shadow: 0px 5px 15px rgba(0,0,0,0.15);
+    }
+
+    .btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 15px 40px;
+        font-size: 20px;
+        font-weight: 600;
+        color: white;
+        text-decoration: none;
+        background: linear-gradient(90deg, #ff66b3, #ff9f6e);
+        border-radius: 40px;
+        box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+        transition: 0.3s ease;
+    }
+
+    .btn:hover {
+        transform: scale(1.08);
+        box-shadow: 0px 7px 20px rgba(0,0,0,0.25);
+    }
+
+</style>
 </head>
+
 <body>
 
+<!-- Hearts floating randomly -->
+<script>
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 7000);
+    }
+    setInterval(createHeart, 600);
+</script>
+
 <h1>Hi Aishwarya 😊✨</h1>
+<p>I made something cute for you… wanna see? 💕👇</p>
 
-<!-- FIXED WORKING IMAGE -->
-<img src="https://i.ibb.co/h1DLGJZg/IMG-20251202-190945.jpg" class="main-img">
+<div class="card">
+    <img src="https://i.ibb.co/h1DLGJZg/IMG-20251202-190945.jpg" alt="Image">
+</div>
 
-<p>Are you ready? I made something fun for you 😁👇</p>
+<a class="btn" href="page2.html">Next Page ➜</a>
 
-<a href="page2.html" class="btn">Tap Me 🎉</a>
+<p style="margin-top: 20px; font-size: 17px;">You're literally the sweetest chaos ever 😂💗</p>
 
-<p>You’re literally the cutest chaos ever 😂💗</p>
-
-<!-- Emojis Floating Randomly -->
-<span class="emoji" style="left: 10%; animation-delay: 0s;">💖</span>
-<span class="emoji" style="left: 30%; animation-delay: 1s;">✨</span>
-<span class="emoji" style="left: 50%; animation-delay: 2s;">💛</span>
-<span class="emoji" style="left: 70%; animation-delay: 1.5s;">💕</span>
-<span class="emoji
+</body>
+</html>
